@@ -122,18 +122,21 @@ function HouseContextProvider(props) {
 
   const getRandomHouse = async () => {
     try {
-      const response = await userAxios.get(`/api/houses`);
-      const randomInt = Math.floor(Math.random() * response.data.length);
-      setHouse(response.data[randomInt]);
+      const response = await userAxios.get(`/api/houses/random`);
+      // const randomInt = Math.floor(Math.random() * response.data.length);
+      setHouse(response.data);
     } catch (error) {
       console.error("error fetching data:", error);
     }
   };
 
-  async function handleFavorite(name) {
+  async function handleFavorite(name, customizations) {
     // console.log(userId);
     try {
-      const res = await userAxios.post("/api/profile", { house: name });
+      const res = await userAxios.post("/api/profile", {
+        house: name,
+        customizations,
+      });
       setUserHouses((prevUserHouses) => {
         return [...prevUserHouses, res.data];
       });

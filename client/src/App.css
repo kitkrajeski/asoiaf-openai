@@ -1,14 +1,11 @@
 .hero {
   position: absolute;
   height: 100vh;
-  /* background-image: url('./assets/Iron_Throne_Official_Guide.webp'); */
+  background-image: url("./assets/Iron_Throne_Official_Guide.webp");
   background-size: cover;
+  background-repeat: repeat;
   width: 100%;
   z-index: -1;
-}
-
-.default--background {
-  background-image: url("./assets/Iron_Throne_Official_Guide.webp");
 }
 
 .navbar {
@@ -17,6 +14,7 @@
   width: 100%;
   background-color: rgba(128, 0, 0, 0.7);
   border-bottom: 2px solid #ffd700;
+  margin-bottom: 25px;
 }
 
 .navbar--links {
@@ -36,8 +34,22 @@
   left: 5%;
   display: flex;
   flex-direction: column;
-  color: #ffff00f7;
+  align-items: center;
   margin-bottom: 50px;
+}
+.home--title {
+  font-size: 75px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.home--description {
+  font-size: 45px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.home--author {
+  font-size: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .auth--container {
@@ -47,19 +59,18 @@
 }
 
 .auth--text {
-  color: #ffff00f7;
 }
 
 .red--background {
   /* display: flex; */
   background-color: rgba(128, 0, 0, 0.7);
-  padding: 25px;
+  padding: 15px;
   align-items: center;
 }
 
 .main--button {
   background-color: #8b0000; /* Dark red */
-  color: #ffd700; /* Gold */
+  color: #ffd700;
   border: none;
   padding: 10px 20px;
   font-size: 16px;
@@ -73,26 +84,17 @@
   transform: scale(1.05); /* Slightly enlarge the button */
 }
 
-.home--title {
-  font-size: 75px;
-}
-
-.home--description {
-  font-size: 45px;
-}
-
-.home--author {
-  font-size: 20px;
-}
-
 .about {
   display: flex;
   flex-direction: column;
-  color: #ffff00f7;
 }
 
-.houses--background {
-  background-color: #3c3c3c;
+.about-text {
+  font-size: 30px;
+}
+
+.houses {
+  /* background-color: #3c3c3c; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -100,8 +102,26 @@
   flex-direction: column;
 }
 
-.houses--info {
+@keyframes flash {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.loading-button {
+  animation: flash 2s infinite;
+}
+
+.houses--text {
   color: #ffff00f7;
+}
+
+.houses--background {
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .houses--crests {
@@ -115,13 +135,17 @@
 }
 
 .profile {
-  background-color: #3c3c3c;
+  /* background-color: #3c3c3c; */
   color: #ffff00f7;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  /* min-height: 25vh; */
   flex-direction: column;
+}
+
+.profile-text {
+  width: 100%;
 }
 
 .user-houses {
@@ -129,8 +153,4 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-}
-
-.coat-of-arms {
-  padding-bottom: 30px;
 }

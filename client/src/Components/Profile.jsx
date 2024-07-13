@@ -12,18 +12,19 @@ function Profile() {
     }
   }, [userState.user]);
   return (
-    <div className="profile">
-      <h1>Welcome to Your Database, {userState.user.username}</h1>
-      <h3>Customize Your Favorite Houses Here!</h3>
-      {/* <p>{JSON.stringify(userHouses, null, 2)}</p> */}
-      <UserHousesList
-        userHouses={userHouses}
-        // renderItem={(userHouse) => (
-        //   <UserHouse key={userHouse._id} userHouse={userHouse} />
-        // )}
-      />
+    <>
+      <div className="profile">
+        <h1 className="profile-text red--background primary--text--style">
+          Welcome to Your Database, {userState.user.username}
+        </h1>
+        <h2 className="profile-text red--background primary--text--style">
+          Customize Your Favorite Houses Here!
+        </h2>
+        {/* <p>{JSON.stringify(userHouses, null, 2)}</p> */}
+      </div>
+      <UserHousesList userHouses={userHouses} className="houses" />
       {/* <UserHouse /> */}
-    </div>
+    </>
   );
 }
 

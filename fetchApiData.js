@@ -44,7 +44,6 @@ const fetchAndSaveHouses = async () => {
         ancestralWeapons: houseData.ancestralWeapons,
         cadetBranches: houseData.cadetBranches,
         swornMembers: houseData.swornMembers,
-        crest: houseData.crest,
       });
 
       await newHouse.save();

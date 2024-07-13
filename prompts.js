@@ -6,7 +6,7 @@ const openai = new OpenAIApi({
 const prompt = async (text) => {
   const response = await openai.images.generate({
     model: "dall-e-3",
-    prompt: "a white siamese cat",
+    prompt: `give me a medieval shield with the following description: ${text}`,
     n: 1,
     size: "1024x1024",
   });

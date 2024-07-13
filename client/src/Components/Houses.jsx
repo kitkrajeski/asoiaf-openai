@@ -20,25 +20,27 @@ function Houses() {
     getRandomHouse();
   };
   return (
-    <div className="houses houses--background">
+    <div className="houses default--background">
       <button className="houses main--button" onClick={handleGetRandomHouse}>
         Get New House
       </button>
       {house ? (
-        <>
-          <h1 className="houses--info">{house.name}</h1>
-          <h1 className="houses--info">{house.region}</h1>
+        <div className="houses--background">
+          <h1 className="houses--text">{house.name}</h1>
+          <h1 className="houses--text">{house.region}</h1>
           {house.words && (
-            <h2 className="houses--info">{`'${house.words}'`}</h2>
+            <h2 className="houses--text">{`'${house.words}'`}</h2>
           )}
-          <img className="houses--crests" src={`/api/images/${house.crest}`} />
-        </>
+          <img className="houses--crests" src={house.crest} />
+        </div>
       ) : (
-        <div>No house yet</div>
+        <div>
+          <h1 className="loading-button houses--text">Loading House...</h1>
+        </div>
       )}
       <button
         className="houses main--button"
-        onClick={() => handleFavorite(house.name)}
+        onClick={() => handleFavorite(house.name, { crest: house.crest })}
       >
         Add to Favorites
       </button>

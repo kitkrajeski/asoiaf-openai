@@ -46,6 +46,7 @@ userHouseRouter.post("/", async (req, res, next) => {
     const newUserHouse = new UserHouse({
       house: house._id,
       user: req.auth._id,
+      customizations: req.body.customizations,
     });
     console.log(newUserHouse);
     const savedHouse = await newUserHouse
