@@ -117,10 +117,9 @@
 }
 
 .houses--text {
-  color: #ffff00f7;
 }
 
-.houses--background {
+/* .houses--background {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
@@ -132,8 +131,29 @@
   min-height: 275px;
   max-height: 310px;
   object-fit: contain;
+} */
+
+.houses--background {
+  background-color: rgba(
+    60,
+    60,
+    60,
+    0.8
+  ); /* Semi-transparent dark background */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
+.houses--crests {
+  width: 100%;
+  max-width: 310px;
+  height: auto;
+  object-fit: contain;
+  background: transparent; /* Ensure the image background is transparent */
+}
 .profile {
   /* background-color: #3c3c3c; */
   color: #ffff00f7;

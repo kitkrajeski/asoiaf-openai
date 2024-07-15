@@ -49,6 +49,7 @@ function HouseContextProvider(props) {
 
   const [userState, setUserState] = useState(initState);
   const [house, setHouse] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [userHouses, setUserHouses] = useState([]);
 
   async function signup(creds) {
@@ -121,10 +122,12 @@ function HouseContextProvider(props) {
   }
 
   const getRandomHouse = async () => {
+    setLoading(false);
     try {
       const response = await userAxios.get(`/api/houses/random`);
       // const randomInt = Math.floor(Math.random() * response.data.length);
       setHouse(response.data);
+      setLoading(true);
     } catch (error) {
       console.error("error fetching data:", error);
     }
@@ -171,6 +174,7 @@ function HouseContextProvider(props) {
   const value = {
     house,
     getRandomHouse,
+    loading,
     signup,
     resetAuthErr,
     login,
