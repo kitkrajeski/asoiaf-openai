@@ -11,7 +11,7 @@ app.use(morgan("dev"));
 app.use(express.static(path.join(__dirname, "assets")));
 
 app.get("/api/images/:filename", (req, res) => {
-  res.sendFile(path.join(__dirname, `assets/crests/${req.params.filename}`));
+  res.sendFile(path.join(__dirname, `public/images/${req.params.filename}`));
 });
 
 // mongoose.connect('mongodb+srv://kkrajeski:6KyKuQm8X2An4OUr@vschool.zvyzn1q.mongodb.net/?retryWrites=true&w=majority&appName=vSchool')

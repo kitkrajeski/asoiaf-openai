@@ -37,10 +37,6 @@
   align-items: center;
   margin-bottom: 50px;
 }
-.home--title {
-  font-size: 75px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-}
 
 .home--description {
   font-size: 45px;
@@ -58,8 +54,8 @@
   align-items: center;
 }
 
-.auth--text {
-}
+/* .auth--text {
+} */
 
 .red--background {
   /* display: flex; */
@@ -116,8 +112,8 @@
   animation: flash 2s infinite;
 }
 
-.houses--text {
-}
+/* .houses--text {
+} */
 
 /* .houses--background {
   background-color: rgba(0, 0, 0, 0.5);
@@ -173,4 +169,32 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.typography {
+  font-family: Jaini;
+  color: #ffd700;
+  text-align: center;
+}
+
+.typography.title {
+  font-size: 75px;
+  font-weight: 800;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+}
+
+.typography.sub-title {
+  font-size: 45px;
+  font-weight: 800;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.typography.body {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.typography.heading {
+  font-size: 32px;
+  font-weight: 800;
 }

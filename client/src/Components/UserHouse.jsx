@@ -18,7 +18,7 @@ export default function UserHouse(props) {
         <h1 className="user-houses houses--text">{userHouse.house.words}</h1>
         <img
           className="user-houses houses--crests coat-of-arms"
-          src={userHouse.customizations.crest}
+          src={`/api/images/${userHouse.customizations.crest}`}
         />
       </ul>
       <button onClick={handleRemoveFavorite} className="main--button">

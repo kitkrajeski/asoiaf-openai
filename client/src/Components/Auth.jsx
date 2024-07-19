@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import Form from "./Form";
 import { HouseContext } from "../context/HouseProvider";
+import { Typography } from "./Typography";
 
 function Auth() {
   const { signup, login, errMsg, resetAuthErr } = useContext(HouseContext);
@@ -17,6 +18,9 @@ function Auth() {
       <h2 className="red--background primary--text--style">
         Create an Account to Start Building your Database!
       </h2>
+      <Typography variant="heading">
+        Create an Account to Start Building Your Database!
+      </Typography>
       {isMember ? (
         <>
           <Form isMember={isMember} submit={login} errMsg={errMsg} />

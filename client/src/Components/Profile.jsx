@@ -3,6 +3,7 @@ import { HouseContext } from "../context/HouseProvider";
 // import UserHouseList from "./UserHouseList";
 import UserHousesList from "./UserHouseList";
 import UserHouse from "./UserHouse";
+import Dropdown from "./Input";
 
 function Profile() {
   const { userState, userHouses, getFavorites } = useContext(HouseContext);
@@ -13,6 +14,11 @@ function Profile() {
   }, [userState.user]);
   return (
     <>
+      <Dropdown
+        label={"test"}
+        disabled
+        options={[{ label: "option 1", value: "option-1" }]}
+      />
       <div className="profile">
         <h1 className="profile-text red--background primary--text--style">
           Welcome to Your Database, {userState.user.username}

@@ -1,4 +1,7 @@
 const express = require("express");
+const axios = require("axios");
+const fs = require("fs");
+const path = require("path");
 const userHouseRouter = express.Router();
 const House = require("../models/house");
 const UserHouse = require("../models/userHouse");
@@ -18,19 +21,6 @@ userHouseRouter.get("/houses", async (req, res, next) => {
     console.log(error);
   }
 });
-// profileRouter.get("/user/:userId", async (req, res, next) => {
-//   try {
-//     console.log(req.params);
-//     userId.toString();
-//     // req.body.username = req.auth.username;
-//     // const newUserHouse = new userHouse({ ...req.body, user: req.auth._id });
-//     // await newUserHouse.save();
-//     // res.status(201).send(newUserHouse);
-//     req.body.user = req.auth._id;
-//     const house = await House.findOne({ name: req.body.name });
-//     if (!house) {
-//       return res.status(404).send({ error: "house not found" });
-//     }
 
 userHouseRouter.post("/", async (req, res, next) => {
   try {
@@ -43,10 +33,27 @@ userHouseRouter.post("/", async (req, res, next) => {
       return res.status(404).send({ error: "house already in favorites" });
     }
 
+    const imageUrl = req.body.customizations.crest; // Assuming the URL is passed in the request body
+    const imagePath = path.resolve(
+      __dirname,
+      "../public/images",
+      `${house.name}.png`
+    );
+
+    // Download and save the image
+    const response = await axios({
+      url: imageUrl,
+      method: "GET",
+      responseType: "stream",
+    });
+    response.data.pipe(fs.createWriteStream(imagePath));
+
     const newUserHouse = new UserHouse({
       house: house._id,
       user: req.auth._id,
-      customizations: req.body.customizations,
+      customizations: {
+        crest: `${house.name}.png`,
+      },
     });
     console.log(newUserHouse);
     const savedHouse = await newUserHouse
@@ -59,8 +66,60 @@ userHouseRouter.post("/", async (req, res, next) => {
   }
 });
 
+// userHouseRouter.post("/", async (req, res, next) => {
+//   try {
+//     const house = await House.findOne({ name: req.body.house });
+//     if (!house) {
+//       return res.status(404).send({ error: "house not found" });
+//     }
+//     const userHouse = await UserHouse.findOne({ house: house._id });
+//     if (!!userHouse) {
+//       return res.status(404).send({ error: "house already in favorites" });
+//     }
+
+//     const imageUrl = req.body.crest; // Assuming the URL is passed in the request body
+//     const imagePath = path.resolve(
+//       __dirname,
+//       "../public/images",
+//       `${house.name}.png`
+//     );
+
+//     // Download and save the image
+//     const response = await axios({
+//       url: imageUrl,
+//       method: "GET",
+//       responseType: "stream",
+//     });
+//     response.data.pipe(fs.createWriteStream(imagePath));
+
+//     const newUserHouse = new UserHouse({
+//       house: house._id,
+//       user: req.auth._id,
+//       customizations: req.body.customizations,
+//       crestPath: `/images/${house.name}.png`, // Save the local path to the image
+//     });
+//     const savedHouse = await newUserHouse
+//       .save()
+//       .then((house) => house.populate("house"));
+//     res.status(201).send(savedHouse);
+//   } catch (error) {
+//     console.log(error);
+//     res.status(500).send(error.message);
+//   }
+// });
+
 userHouseRouter.delete("/:id", async (req, res, next) => {
   const userHouse = await UserHouse.findByIdAndDelete(req.params.id);
+  // delete file from images
+  fs.unlink(
+    path.resolve(
+      __dirname,
+      `../public/images/${userHouse.customizations.crest}`
+    ),
+    (err) => {
+      console.log(err);
+    }
+  );
   res.status(204).send(req.params.id);
 });
 

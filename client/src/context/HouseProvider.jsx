@@ -122,14 +122,15 @@ function HouseContextProvider(props) {
   }
 
   const getRandomHouse = async () => {
-    setLoading(false);
+    setLoading(true);
     try {
       const response = await userAxios.get(`/api/houses/random`);
       // const randomInt = Math.floor(Math.random() * response.data.length);
       setHouse(response.data);
-      setLoading(true);
+      setLoading(false);
     } catch (error) {
       console.error("error fetching data:", error);
+      setLoading(false);
     }
   };
 
