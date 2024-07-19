@@ -9,6 +9,7 @@ require("dotenv").config();
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(express.static(path.join(__dirname, "assets")));
+app.use(express.static(path.join(__dirname, "client", "dist")));
 
 app.get("/api/images/:filename", (req, res) => {
   res.sendFile(path.join(__dirname, `public/images/${req.params.filename}`));
@@ -39,6 +40,12 @@ app.use((err, req, res, next) => {
     res.status(err.status);
   }
   return res.send({ errMsg: err.message });
+});
+
+app.get("*", (req, res) => {
+  res
+    .status(200)
+    .sendFile(path.join(__dirname, "client", "dist", "index.html"));
 });
 
 app.listen(9000, () => {

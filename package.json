@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "assign-crests": "node assignCrests.js"
+    "assign-crests": "node assignCrests.js",
+    "deploy": "npm i && cd client && npm i && npm run build"
   },
   "keywords": [],
   "author": "",
