@@ -12,6 +12,9 @@ const userHouseSchema = new mongoose.Schema({
     ref: "House",
     required: true,
   },
+  customizations: {
+    crest: String,
+  },
   // crest
   // words
   // etc

@@ -1,47 +1,55 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { HouseContext } from "../context/HouseProvider";
+import House from "./House";
+import LoadingIndicator from "./Loading";
 
 function Houses() {
   // const {house, getRandomHouse} = useHouseContext()
-  const {
-    house,
-    getRandomHouse,
-    handleFavorite,
-    user,
-    userState,
-    userHouses,
-    setUserHouses,
-  } = useContext(HouseContext);
+  const { house, getRandomHouse, handleFavorite, loading } =
+    useContext(HouseContext);
 
-  useEffect(() => {
-    getRandomHouse();
-  }, []);
-  const handleGetRandomHouse = () => {
-    getRandomHouse();
-  };
+  // const [loading, setLoading] = useState(false);
+
+  // function handleLoadState() {
+  //   if (house) {
+  //     setLoading(true);
+  //   } else {
+  //     setLoading(false);
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   getRandomHouse();
+  // }, [{ loading }]);
+  // const handleGetRandomHouse = () => {
+  //   getRandomHouse();
+  // };
+
   return (
-    <div className="houses houses--background">
-      <button className="houses main--button" onClick={handleGetRandomHouse}>
+    <div className="houses default--background">
+      {/* <button className="houses main--button" onClick={handleGetRandomHouse}> */}
+      <button className="houses main--button" onClick={() => getRandomHouse()}>
         Get New House
       </button>
-      {house ? (
-        <>
-          <h1 className="houses--info">{house.name}</h1>
-          <h1 className="houses--info">{house.region}</h1>
-          {house.words && (
-            <h2 className="houses--info">{`'${house.words}'`}</h2>
-          )}
-          <img className="houses--crests" src={`/api/images/${house.crest}`} />
-        </>
-      ) : (
-        <div>No house yet</div>
+      {/* {loading ? (
+        <LoadingIndicator label="Loading House..." />
+      ) : house ? (
+        <House
+          house={house}
+          onFavoriteClick={() =>
+            handleFavorite(house.name, { crest: house.crest })
+          }
+        />
+      ) : null} */}
+      {loading && <LoadingIndicator label="Loading House..." />}
+      {house && (
+        <House
+          house={house}
+          onFavoriteClick={() =>
+            handleFavorite(house.name, { crest: house.crest })
+          }
+        />
       )}
-      <button
-        className="houses main--button"
-        onClick={() => handleFavorite(house.name)}
-      >
-        Add to Favorites
-      </button>
     </div>
   );
 }

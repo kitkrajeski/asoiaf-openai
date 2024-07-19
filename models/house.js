@@ -66,10 +66,10 @@ const houseSchema = new mongoose.Schema({
     type: [String],
     required: false,
   },
-  crest: {
-    type: String,
-    required: false,
-  },
+  // crest: {
+  //   type: String,
+  //   required: false,
+  // },
 });
 
 module.exports = mongoose.model("House", houseSchema);

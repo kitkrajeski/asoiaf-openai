@@ -3,6 +3,7 @@ import { HouseContext } from "../context/HouseProvider";
 // import UserHouseList from "./UserHouseList";
 import UserHousesList from "./UserHouseList";
 import UserHouse from "./UserHouse";
+import Dropdown from "./Input";
 
 function Profile() {
   const { userState, userHouses, getFavorites } = useContext(HouseContext);
@@ -12,18 +13,24 @@ function Profile() {
     }
   }, [userState.user]);
   return (
-    <div className="profile">
-      <h1>Welcome to Your Database, {userState.user.username}</h1>
-      <h3>Customize Your Favorite Houses Here!</h3>
-      {/* <p>{JSON.stringify(userHouses, null, 2)}</p> */}
-      <UserHousesList
-        userHouses={userHouses}
-        // renderItem={(userHouse) => (
-        //   <UserHouse key={userHouse._id} userHouse={userHouse} />
-        // )}
+    <>
+      <Dropdown
+        label={"test"}
+        disabled
+        options={[{ label: "option 1", value: "option-1" }]}
       />
+      <div className="profile">
+        <h1 className="profile-text red--background primary--text--style">
+          Welcome to Your Database, {userState.user.username}
+        </h1>
+        <h2 className="profile-text red--background primary--text--style">
+          Customize Your Favorite Houses Here!
+        </h2>
+        {/* <p>{JSON.stringify(userHouses, null, 2)}</p> */}
+      </div>
+      <UserHousesList userHouses={userHouses} className="houses" />
       {/* <UserHouse /> */}
-    </div>
+    </>
   );
 }
 

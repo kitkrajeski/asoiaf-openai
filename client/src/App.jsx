@@ -17,20 +17,22 @@ function App() {
 
   return (
     <>
-      <Hero />
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route
-          path="/houses"
-          element={userState.token ? <Houses /> : <Navigate to="/" />}
-        />
-        <Route
-          path="/profile"
-          element={userState.token ? <Profile /> : <Navigate to="/" />}
-        />
-      </Routes>
+      <div>
+        <Hero />
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route
+            path="/houses"
+            element={userState.token ? <Houses /> : <Navigate to="/" />}
+          />
+          <Route
+            path="/profile"
+            element={userState.token ? <Profile /> : <Navigate to="/" />}
+          />
+        </Routes>
+      </div>
     </>
   );
 }

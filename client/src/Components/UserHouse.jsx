@@ -11,14 +11,14 @@ export default function UserHouse(props) {
   }
   // return <li>{renderItem}</li>;
   return (
-    <div className="user-houses houses--background">
-      <ul>
-        <h1 className="user-houses houses--info">{userHouse.house.name}</h1>
-        <h1 className="user-houses houses--info">{userHouse.house.region}</h1>
-        <h1 className="user-houses houses--info">{userHouse.house.words}</h1>
+    <div className="user-houses">
+      <ul className="houses--background">
+        <h1 className="user-houses houses--text">{userHouse.house.name}</h1>
+        <h1 className="user-houses houses--text">{userHouse.house.region}</h1>
+        <h1 className="user-houses houses--text">{userHouse.house.words}</h1>
         <img
           className="user-houses houses--crests coat-of-arms"
-          src={`/api/images/${userHouse.house.crest}`}
+          src={`/api/images/${userHouse.customizations.crest}`}
         />
       </ul>
       <button onClick={handleRemoveFavorite} className="main--button">

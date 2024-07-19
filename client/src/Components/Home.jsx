@@ -1,15 +1,16 @@
 import React from "react";
 import Auth from "./Auth";
+import { Typography } from "./Typography";
 
 function Home() {
   return (
     <>
       <div className="home red--background">
-        <h1 className="home--title">THE HOUSES OF WESTEROS</h1>
-        <h1 className="home--description">
-          Discover an ancient family from the World of A Song of Ice and Fire
-        </h1>
-        <h1 className="home--author">By: Kit Krajeski</h1>
+        <Typography variant="title">THE HOUSES OF WESTEROS</Typography>
+        <Typography variant="sub-title">
+          Explore the World of George RR Martin's A Song of Ice and Fire
+        </Typography>
+        <Typography variant="sub-title">By: Kit Krajeski</Typography>
       </div>
       <div>
         <Auth />
